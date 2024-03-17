@@ -1,11 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TodoModule } from './modules/todo/todo.module';
-import { ConfigService } from "@nestjs/config";
+import { ConfigModule } from '@nestjs/config';
+import { MongoModule, MysqlModule } from '../libs/common/database';
+import { TodoSqlModule } from './modules/todo-mysql/todo.module';
 
 @Module({
-  imports: [TodoModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongoModule,
+    MysqlModule,
+    TodoModule,
+    TodoSqlModule,
+  ],
   controllers: [],
   providers: [],
 })

@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from "@nestjs/common";
+import { ValidationPipe } from '@nestjs/common';
 declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -9,7 +9,7 @@ async function bootstrap() {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-  await app.listen(3000,()=>{
+  await app.listen(3000, () => {
     console.log('App listen : ' + 3000);
   });
 }

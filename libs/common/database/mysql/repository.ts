@@ -1,5 +1,5 @@
 import { Logger, NotFoundException } from '@nestjs/common';
-import { Entity } from './entity';
+import { EntitySql } from './entity';
 import {
   EntityManager,
   FindOptionsRelations,
@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
-export abstract class MySqlRepository<T extends Entity<T>> {
+export abstract class MySqlRepository<T extends EntitySql<T>> {
   protected abstract readonly logger: Logger;
 
   constructor(

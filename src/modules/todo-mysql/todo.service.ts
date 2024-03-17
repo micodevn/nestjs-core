@@ -1,15 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateTodoDto } from './dto/create-todo.dto';
 // import { UpdateTodoDto } from './dto/update-todo.dto';
-import { TodoRepository } from './todo.repository';
+import { TodoSqlRepository } from './todo.repository';
+import { TodoEntitySql } from "./entities/todo.entity";
 
 @Injectable()
-export class TodoService {
-  constructor(private readonly todoRepo: TodoRepository) {}
+export class TodoSqlService {
+  constructor(private readonly todoRepo: TodoSqlRepository) {}
   create(createTodoDto: CreateTodoDto) {
-    return this.todoRepo.create({
-      ...createTodoDto,
-    });
+    const reservation = new TodoEntitySql(createTodoDto);
+
+    return this.todoRepo.create(reservation);
   }
 
   findAll() {
