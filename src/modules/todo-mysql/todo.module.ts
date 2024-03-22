@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {  TodoSqlService } from './todo.service';
+import { TodoSqlService } from './todo.service';
 import { TodoSqlController } from './todo.controller';
 import { TodoEntitySql } from './entities/todo.entity';
 import { MysqlModule } from '@app/common';

@@ -1,4 +1,4 @@
-import { Logger, NotFoundException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { EntitySql } from './entity';
 import {
   EntityManager,
@@ -9,7 +9,7 @@ import {
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 
 export abstract class MySqlRepository<T extends EntitySql<T>> {
-  protected abstract readonly logger: Logger;
+  // protected abstract readonly logger: Logger;
 
   constructor(
     private readonly itemsRepository: Repository<T>,
@@ -27,7 +27,7 @@ export abstract class MySqlRepository<T extends EntitySql<T>> {
     const entity = await this.itemsRepository.findOne({ where, relations });
 
     if (!entity) {
-      this.logger.warn('Document not found with where', where);
+      // this.logger.warn('Document not found with where', where);
       throw new NotFoundException('Entity not found.');
     }
 
@@ -44,7 +44,7 @@ export abstract class MySqlRepository<T extends EntitySql<T>> {
     );
 
     if (!updateResult.affected) {
-      this.logger.warn('Entity not found with where', where);
+      // this.logger.warn('Entity not found with where', where);
       throw new NotFoundException('Entity not found.');
     }
 
