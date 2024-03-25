@@ -1,5 +1,5 @@
 # Base image
-FROM node:20.11.1
+FROM node:18
 
 # Create app directory
 WORKDIR /usr/src/app/nestjs

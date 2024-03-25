@@ -16,9 +16,12 @@ import { User } from './entities/user.entity';
 import { Request } from 'express';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { GetCurrentUserDecorator } from '../auth/decorators/get-current-user.decorator';
+import { AppLogger } from '../../common/logger/logger.service';
 
 @Controller('user')
 export class UserController {
+  private readonly logger = new AppLogger(UserController.name);
+
   constructor(private readonly userService: UserService) {}
 
   @Post()
@@ -28,6 +31,9 @@ export class UserController {
 
   @Get()
   findAll() {
+    this.logger.log('BUi van tai');
+    this.logger.warn('BUi van tai');
+    this.logger.error('BUi van tai');
     return this.userService.findAll();
   }
 
