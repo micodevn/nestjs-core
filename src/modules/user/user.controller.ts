@@ -31,9 +31,10 @@ export class UserController {
 
   @Get()
   findAll() {
-    this.logger.log('BUi van tai');
-    this.logger.warn('BUi van tai');
-    this.logger.error('BUi van tai');
+    this.logger.log('Logger Test');
+    this.logger.warn('Logger Test');
+    this.logger.error('Logger Test');
+
     return this.userService.findAll();
   }
 

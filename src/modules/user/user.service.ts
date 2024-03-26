@@ -4,10 +4,14 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
+import { UserEventEmit } from './events/user.events.emit';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepo: UserRepository) {}
+  constructor(
+    private readonly userRepo: UserRepository,
+    private readonly userEventEmit: UserEventEmit,
+  ) {}
 
   async create(createUserDto: CreateUserDto) {
     const user = new User(createUserDto);
@@ -33,6 +37,12 @@ export class UserService {
   }
 
   findAll() {
+    this.userEventEmit.userCreated({
+      username: 'taibv',
+      payload: {
+        fullName: 'văn tài',
+      },
+    });
     return this.userRepo.find({});
   }
 

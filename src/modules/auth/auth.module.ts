@@ -9,6 +9,7 @@ import { UserService } from '../user/user.service';
 // import { UserRepository } from '../user/user.repository';
 import { UserModule } from '../user/user.module';
 import { UserController } from '../user/user.controller';
+import { UserEventEmit } from '../user/events/user.events.emit';
 
 @Module({
   imports: [
@@ -25,6 +26,12 @@ import { UserController } from '../user/user.controller';
     }),
   ],
   controllers: [AuthController, UserController],
-  providers: [AuthService, UserService, LocalStrategy, JwtStrategy],
+  providers: [
+    AuthService,
+    UserService,
+    LocalStrategy,
+    JwtStrategy,
+    UserEventEmit,
+  ],
 })
 export class AuthModule {}

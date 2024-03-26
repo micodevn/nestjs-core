@@ -23,7 +23,8 @@
       ],
       "@app/common/*": [
         "libs/common/src/*"
-      ]
+      ],
+      "~events-emitter/*": ["src/event-emitter/*"]
     }
   }
 }
